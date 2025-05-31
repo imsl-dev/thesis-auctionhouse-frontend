@@ -1,0 +1,170 @@
+<form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+  <div class="signup-form-container d-flex flex-column align-items-center mt-5">
+    <div class="col-12 col-md-6 d-flex flex-column gap-3">
+     
+      <h2>Crear cuenta</h2>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="firstName" 
+          name="firstName"
+          #firstNameInput="ngModel"
+          required
+          minlength="2">
+        @if (firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)) {
+          <mat-error>
+            @if (firstNameInput.errors?.['required']) {
+              El nombre es requerido
+            } @else if (firstNameInput.errors?.['minlength']) {
+              El nombre debe tener al menos 2 caracteres
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="lastName" 
+          name="lastName"
+          #lastNameInput="ngModel"
+          required
+          minlength="2">
+        @if (lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)) {
+          <mat-error>
+            @if (lastNameInput.errors?.['required']) {
+              El apellido es requerido
+            } @else if (lastNameInput.errors?.['minlength']) {
+              El apellido debe tener al menos 2 caracteres
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Teléfono</mat-label>
+        <input 
+          matInput 
+          type="tel" 
+          [(ngModel)]="phoneNumber" 
+          name="phoneNumber"
+          #phoneInput="ngModel"
+          required
+          pattern="[0-9+\-\s()]{8,15}">
+        @if (phoneInput.invalid && (phoneInput.dirty || phoneInput.touched)) {
+          <mat-error>
+            @if (phoneInput.errors?.['required']) {
+              El teléfono es requerido
+            } @else if (phoneInput.errors?.['pattern']) {
+              Formato de teléfono inválido
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input 
+          matInput 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email"
+          #emailInput="ngModel"
+          required
+          email>
+        @if (emailInput.invalid && (emailInput.dirty || emailInput.touched)) {
+          <mat-error>
+            @if (emailInput.errors?.['required']) {
+              El email es requerido
+            } @else if (emailInput.errors?.['email']) {
+              Formato de email inválido
+            }
+            
+          </mat-error>
+        }
+       
+      </mat-form-field>
+       @if(!isEmailAvailable) {
+        <mat-error>El email ya esta en uso</mat-error>
+      }
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input 
+          matInput 
+          type="password" 
+          [(ngModel)]="password" 
+          name="password"
+          #passwordInput="ngModel"
+          required
+          minlength="8">
+        @if (passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)) {
+          <mat-error>
+            @if (passwordInput.errors?.['required']) {
+              La contraseña es requerida
+            } @else if (passwordInput.errors?.['minlength']) {
+              La contraseña debe tener al menos 8 caracteres
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Dirección</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="address" 
+          name="address"
+          #addressInput="ngModel"
+          required
+          minlength="5">
+        @if (addressInput.invalid && (addressInput.dirty || addressInput.touched)) {
+          <mat-error>
+            @if (addressInput.errors?.['required']) {
+              La dirección es requerida
+            } @else if (addressInput.errors?.['minlength']) {
+              La dirección debe tener al menos 5 caracteres
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Barrio</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="district" 
+          name="district"
+          #districtInput="ngModel"
+          required
+          minlength="2">
+        @if (districtInput.invalid && (districtInput.dirty || districtInput.touched)) {
+          <mat-error>
+            @if (districtInput.errors?.['required']) {
+              El barrio es requerido
+            } @else if (districtInput.errors?.['minlength']) {
+              El barrio debe tener al menos 2 caracteres
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+      
+      <div>
+        <label for="photo">Foto de perfil:</label>
+        <input type="file" id="photo" (change)="onFileSelected($event)" accept="image/*">
+      </div>
+      
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="signupForm.invalid">
+        Registrarse
+      </button>
+    </div>
+  </div>
+</form>
+
