@@ -1,0 +1,24 @@
+<div class="login-background d-flex flex-column align-items-center">
+    <div class="row w-100">
+      <h1 class="d-flex justify-content-center mt-5 w-100 title">CórdobaOferta - Casa de Subastas</h1>    
+    </div>
+    
+    <div class="mt-5 d-flex flex-column align-items-center w-100">
+      <!-- Form container with fixed width -->
+      <div class="col-12 col-md-4 d-flex flex-column gap-3">
+        
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="email">        
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password"  [(ngModel)]="password">
+        </mat-form-field>
+        
+        <button class="btn btn-login w-100" (click)="logInputs()">Ingresar</button>
+        
+      </div>
+    </div>
+  </div>

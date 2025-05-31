@@ -1,0 +1,29 @@
+.login-background{ 
+    background-image: url("./assets/login-bg.png");
+    /* Full size */
+  width: 100vw;
+  height: 100vh;
+  /* Controls how the image behaves */
+  background-size: cover;         /* cover whole area */
+  background-position: center;    /* center the image */
+  background-repeat: no-repeat;   /* no repeating */
+
+  /* Optional: add overlay color for readability */
+  /* background-color: rgba(0,0,0,0.4); */
+  /* background-blend-mode: overlay; */
+
+  /* Flex center content (optional) */
+  
+  justify-content: center;
+  align-items: center;
+}
+
+.title {color: white}
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+.btn-login {
+    font-size: large;
+    background-color: rgb(126, 122, 120)
+}
